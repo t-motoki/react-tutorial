@@ -76,7 +76,7 @@ class Game extends React.Component {
       }],
       stepNumber: 0,
       xIsNext: true,
-      matrix: 3
+      matrix: 3,
     };
   }
 
@@ -115,11 +115,12 @@ class Game extends React.Component {
       const col = step.position % matrix;
       const row = step.position ? Math.floor(step.position / matrix) : 0;
       const desc = move ?
-        'Go to move (' + col +', '+ row + ")"
+        'Go to move (' + col + ', ' + row + ")"
         : 'Go to game start';
+      const moveListClassName = (move === history.length - 1) ? 'now-move' : 'move';
       return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>
+          <button className={moveListClassName} onClick={() => this.jumpTo(move)}>
             {desc}
           </button>
         </li>
